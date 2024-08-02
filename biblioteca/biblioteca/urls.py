@@ -19,20 +19,20 @@ from django.urls import path
 from django.contrib import admin
 from django.urls import path, include
 from django.urls import path
-from . import views
+from libros import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('libros/', include('libros.urls')),
+    path('insertar/', views.insertar_libro, name='insertar_libro'),  # Cambiado a 'insertar/' para evitar conflictos con la vista predeterminada
+    path('buscar/', views.buscar_libro, name='buscar_libro'),
 ]
+
 
 
 app_name = 'libros'
 
-urlpatterns = [
-    path('insertar/', views.insertar_libro, name='insertar_libro'),  # Cambiado a 'insertar/' para evitar conflictos con la vista predeterminada
-    path('buscar/', views.buscar_libro, name='buscar_libro'),
-]
+
 
 
 
