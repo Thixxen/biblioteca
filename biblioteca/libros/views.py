@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
-from .forms import InsertarLibroForm
+from .forms import LibroForm
 from .models import Libro
 from .forms import BuscarLibroForm
 
 def insertar_libro(request):
     if request.method == 'POST':
-        form = InsertarLibroForm(request.POST)
+        form = LibroForm(request.POST)
         if form.is_valid():
             form.save()  # Guarda el nuevo libro en la base de datos
             return redirect('libros/insertar_libro.html')  # Redirecciona a otra página después de guardar
     else:
-        form = InsertarLibroForm()
+        form = LibroForm()
     return render(request, 'libros/insertar_libro.html', {'form': form})
 
 
